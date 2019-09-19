@@ -23,6 +23,8 @@ rm - rf test.php
 git rm test.php
 3. 
 git commit -m 'É¾³ı²âÊÔ'
+4.ÎóÉ¾
+git checkout -- test.txt
 
 #¿ËÂ¡
 
