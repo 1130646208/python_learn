@@ -1,0 +1,36 @@
+#配置
+1. 设置用户名
+git config --global user.name 'wangshuangxing'
+2. 设置用户名邮箱
+git config --global user.email '1130646208@qq.com'
+
+cd test
+
+git init
+
+git status
+
+touch a1.php                         # 创建a1.php文件到工作目录
+
+git add a1.php                      # 添加a1.php到暂存区
+
+gitcommit -m  '第一次提交文件'     # 添加a1.php到仓库
+
+#删除文件
+1. 
+rm - rf test.php
+2. 
+git rm test.php
+3. 
+git commit -m '删除测试'
+
+#克隆
+
+git clone https://github.com/CKTim/BlueTooth.git
+git add .（注：别忘记后面的.，此操作是把Test文件夹下面的文件都添加进来）
+git commit  -m  "提交信息"  （注：“提交信息”里面换成你需要，如“first commit”）
+git push -u origin master   （注：此操作目的是把本地仓库push到github上面，此步骤需要你输入帐号和密码）
+
+#查看本地文件
+
+ls
