@@ -3,28 +3,32 @@
 git config --global user.name 'wangshuangxing'
 2. 设置用户名邮箱
 git config --global user.email '1130646208@qq.com'
-
-cd test
-
+#初始化
 git init
-
+#查看当前缓存区
 git status
-
-touch a1.php                         # 创建a1.php文件到工作目录
-
-git add a1.php                      # 添加a1.php到暂存区
-
-gitcommit -m  '第一次提交文件'     # 添加a1.php到仓库
+# 创建a1.php文件到工作目录
+touch a1.php                        
+# 添加a1.php到暂存区
+git add a1.php                      
+# 添加a1.php到仓库
+git commit -m  '第一次提交文件'     
 
 #删除文件
 1. 
-rm - rf test.php
+rm -rf test.php
 2. 
 git rm test.php
 3. 
 git commit -m '删除测试'
 4.误删
 git checkout -- test.txt
+5.
+一种是 git rm --cached “文件路径”，不删除物理文件，仅将该文件从缓存中删除；
+
+一种是 git rm --f “文件路径”，不仅将该文件从缓存中删除，还会将物理文件删除（不会回收到垃圾桶）。
+6.删除暂存区的文件夹
+git rm -r --cached '井盖程序蓝牙模块修改所有参数'
 
 #克隆
 
@@ -32,7 +36,22 @@ git clone https://github.com/CKTim/BlueTooth.git
 git add .（注：别忘记后面的.，此操作是把Test文件夹下面的文件都添加进来）
 git commit  -m  "提交信息"  （注：“提交信息”里面换成你需要，如“first commit”）
 git push -u origin master   （注：此操作目的是把本地仓库push到github上面，此步骤需要你输入帐号和密码）
+git push -u origin master  
+（这里报 error: failed to push some refs to 时候，输入命令： git pull --rebase origin master）
+终止：
+git rebase --abort
 
+报错：'origin' does not appear to be a git repository的时候
+输入
+git remote add origin git@github.com:1130646208/STM32.git
 #查看本地文件
 
 ls
+
+#解决ending 问题
+
+Xcode项目Git提交代码发生LF will be replaced by CRLF in 问题
+
+原因是需要提交的文件是在windows下生成的，windows中的换行符为 CRLF， 而在linux下的换行符为LF，所以在执行add . 时出现提示，解决办法：
+
+git config --global core.autocrlf false
