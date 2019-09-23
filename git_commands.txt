@@ -35,17 +35,16 @@ git rm -r --cached '井盖程序蓝牙模块修改所有参数'
 git clone https://github.com/CKTim/BlueTooth.git
 git add .（注：别忘记后面的.，此操作是把Test文件夹下面的文件都添加进来）
 git commit  -m  "提交信息"  （注：“提交信息”里面换成你需要，如“first commit”）
-git push -u origin master   （注：此操作目的是把本地仓库push到github上面，此步骤需要你输入帐号和密码）
+git push -u origin master（注：此操作目的是把本地仓库push到github上面，此步骤需要你输入帐号和密码）
 git push -u origin master  
 （这里报 error: failed to push some refs to 时候，输入命令： git pull --rebase origin master）
-终止：
+终止rebase：
 git rebase --abort
 
 报错：'origin' does not appear to be a git repository的时候
 输入
 git remote add origin git@github.com:1130646208/STM32.git
 #查看本地文件
-
 ls
 
 #解决ending 问题
