@@ -1,19 +1,15 @@
 from fractions import Fraction
+
+
 #输入行数和列数
 rows=int(input('请输入行数:'))
 clos=int(input('请输入列数:'))
-#创建系数矩阵
+#定义系数矩阵
 matrix=[[0]*clos for k in range(rows)]
-#输入系数矩阵
-for j in range(0,clos):
-    for  i in range(0,rows):
-        matrix[i][j]=float(input('a{}{}='.format(i+1,j+1)))
-print('输入的矩阵：',matrix)
-
-################################################
-
 #存放基变量所在列
 base_vec_index=[0 for i in range(clos)]
+temp=[0 for i in range(rows)]
+################################################
 
 
 for i in range(0,rows):
@@ -21,9 +17,19 @@ for i in range(0,rows):
     base_vec_index[i]=x
 print('base_vec_index:',base_vec_index)
 
-temp=[0 for i in range(rows)]
-################################################
 
+################################################
+def input_():
+    '输入系数矩阵'
+    for j in range(0,clos):
+        for  i in range(0,rows):
+            matrix[i][j]=input('a{}{}='.format(i+1,j+1))
+
+def to_fraction():
+    for j in range(0,clos):
+        for  i in range(0,rows):
+            matrix[i][j]=Fraction(matrix[i][j])
+            
 def process(base_vec_index):
     '找出基变量所在列的系数'
     global temp
@@ -35,12 +41,13 @@ def process(base_vec_index):
 
 
 def to_one(row):
-    '将某行除以此行的基变量'
+    '将某行除以此行的基变量的系数'
     global temp
     global matrix
     global base_vec_index
+    process(base_vec_index)
     for i in range(clos):
-        matrix[row][i]=Fraction(int(matrix[row][i]),int(temp[row]))
+        matrix[row][i]=Fraction(matrix[row][i],temp[row])
         
         
 
@@ -58,13 +65,15 @@ def get_result():
         for j in range(rows):
             if i!=j:
                 minus_to_zero(j,i)
+def out_():
+    for i in range(0,rows):
+        for  j in range(0,clos):
+            print(' {} '.format(matrix[i][j]),end='')
+        print()
 ################################################
-
+input_()
+to_fraction()
 process(base_vec_index)
-
 get_result()
+out_()
 
-for i in range(0,rows):
-    for  j in range(0,clos):
-        print(' {} '.format(matrix[i][j]),end='')
-    print()
