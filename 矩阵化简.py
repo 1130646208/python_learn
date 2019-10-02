@@ -1,8 +1,8 @@
 from fractions import Fraction
 
 #输入行数和列数
-rows=int(input('请输入行数:'))
-clos=int(input('请输入列数:'))
+rows=int(input('请输入基变量个数:'))
+clos=int(input('请输入单纯形表有效区列数:'))
 
 #定义系数矩阵
 matrix=[[0]*clos for i in range(rows)]
@@ -82,6 +82,11 @@ def get_result():
                 minus_to_zero(j,i)
 def out_():
     '输出矩阵，以分数的形式输出'
+    for i in range(0,clos):
+        if i==clos-1:
+            print()
+        else:
+            print(' X{} '.format(i+1),end='')
     for i in range(0,rows):
         for  j in range(0,clos):
             if j==clos-2:
@@ -97,8 +102,14 @@ def out_():
         else:
             print(' {} '.format(matrix[rows][j]),end='  ')
 ################################################
+
 input_()
 to_fraction()
 get_result()
 out_()
+while True:
+    print('\n换基：')
+    get_index()
+    get_result()
+    out_()
 
