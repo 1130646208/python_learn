@@ -19,7 +19,7 @@ def get_index():
     for i in range(0,rows):
         a=int(input('输入第{}行基变量是X几'.format(i+1)))-1
         base_vec_index[i]=a
-    print('base_vec_index:',base_vec_index)
+    #print('base_vec_index:',base_vec_index)
 
 
 def input_():
@@ -35,9 +35,6 @@ def input_():
     matrix.append(y0j)
     
         
-
-
-
 def to_fraction():
     global matrix
     for j in range(0,clos):
@@ -50,7 +47,7 @@ def process(base_vec_index):
     global matrix
     for i in range(rows):
         temp[i]=matrix[i][base_vec_index[i]]
-    print('process_temp',temp)
+    #print('process_temp',temp)
 
 
 
@@ -108,7 +105,7 @@ to_fraction()
 get_result()
 out_()
 while True:
-    print('\n换基：')
+    print('\n换基：按clrl+c停止运行')
     get_index()
     get_result()
     out_()
