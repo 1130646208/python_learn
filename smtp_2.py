@@ -2,9 +2,9 @@ import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
 
-sender = 'test@vip.qq.com'  # 发送邮件名称
+sender = '1130646208@qq.com'  # 发送邮件名称
 # receivers = ['test@163.com','test@vip.qq.com']  # 接收多个邮件，可设置为你的QQ邮箱或者其他邮箱
-receivers = ['1130646208@qq.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
+receivers = ['895659021@qq.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
 mail_host = "smtp.qq.com"  # 设置服务器
 mail_port = 465  # 设置服务器
 mail_user = "1130646208@qq.com"  # QQ邮件登陆名称
@@ -24,11 +24,13 @@ def post_email(title, context):
         smtpObj.sendmail(sender, receivers, message.as_string())
         smtpObj.quit()
         return 1
-    except smtplib.SMTPException:
+
+    except smtplib.SMTPException as err:
+        print(err)
         return 0
 
 
 if __name__ == '__main__':
-    result = post_email("来自于测试数据", "今天测试一下python是否可以发送邮件成功。")
+    result = post_email("给包子的一封信", "你好呀\0xe2")
     print(result)
 
