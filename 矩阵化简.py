@@ -64,7 +64,7 @@ def to_one(row):
 
 
 def minus_to_zero(row1, row2):
-    """row1=row1-row2:两行相减,"""
+    """row1=row1-row2:两行相减"""
     global matrix
     factor = matrix[row1][base_vec_index[row2]]
     for i in range(cols):
@@ -110,7 +110,11 @@ to_fraction()
 get_result()
 out_()
 while True:
-    print('\n换基：按ctrl+c停止运行')
-    get_index()
-    get_result()
-    out_()
+    try:
+        print('\n换基：按ctrl+c停止运行')
+        get_index()
+        get_result()
+        out_()
+    except KeyboardInterrupt :
+        print("换基完成...")
+        break
