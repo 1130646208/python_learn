@@ -7,6 +7,10 @@ cols = int(input('请输入单纯形表有效区列数:'))
 # 定义系数矩阵
 matrix = [[0] * cols for i in range(rows)]
 y0j = [0 for i in range(cols)]
+y1j = [0 for i in range(cols)]
+y2j = [0 for i in range(cols)]
+y3j = [0 for i in range(cols)]
+
 # 存放基变量所在列
 base_vec_index = [0 for i in range(rows)]
 # 存放基变量对应系数
@@ -29,12 +33,24 @@ def input_():
     global matrix
     get_index()
     for j in range(0, cols):
-        y0j[j] = input('y0{}='.format(j + 1))
-
-    for j in range(0, cols):
         for i in range(0, rows):
             matrix[i][j] = input('a{}{}='.format(i + 1, j + 1))
+
+    for j in range(0, cols):
+        y0j[j] = input('y0{}='.format(j + 1))
+    for j in range(0, cols):
+        y1j[j] = input('y1{}='.format(j + 1))
+    for j in range(0, cols):
+        y2j[j] = input('y2{}='.format(j + 1))
+    for j in range(0, cols):
+        y3j[j] = input('y3{}='.format(j + 1))
     matrix.append(y0j)
+    matrix.append(y1j)
+    matrix.append(y2j)
+    matrix.append(y3j)
+
+
+
 
 
 def to_fraction():
@@ -75,7 +91,7 @@ def get_result():
     """得到结果：基变量所在列只有一个1"""
     for i in range(rows):
         to_one(i)
-        for j in range(rows + 1):
+        for j in range(rows + 4):
             if i != j:
                 minus_to_zero(j, i)
 
@@ -96,11 +112,13 @@ def out_():
 
         print()
     print('检验数行：')
-    for j in range(0, cols):
-        if j == cols - 2:
-            print(' {} '.format(matrix[rows][j]), end='||')
-        else:
-            print(' {} '.format(matrix[rows][j]), end='  ')
+    for k in range(0,4):
+        for j in range(0, cols):
+            if j == cols - 2:
+                print(' {} '.format(matrix[rows+k][j]), end='||')
+            else:
+                print(' {} '.format(matrix[rows+k][j]), end='  ')
+        print()
 
 
 ################################################
